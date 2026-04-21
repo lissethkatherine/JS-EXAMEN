@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBuild | Recursos Humanos</title>
+    <link rel="stylesheet" href="/style/resources.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+        </header>
+        <aside class="sidebar">
+            <div class="sidebar-logo-section">
+            <div class="logo-image-container">
+                <img src="/assets/img/logo.png" alt="CampusBuild Logo">
+            </div>
+            <div class="brand-name">
+                <h1>CampusBuild</h1>
+                <span>Gestión de Proyectos</span>
+            </div>
+            </div>
+
+            <nav class="sidebar-nav">
+            <div class="nav-section-label">Principal</div>
+            <a href="dashboard.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
+                <span class="nav-text">Dashboard</span>
+            </a>
+
+            <div class="nav-section-label">Proyectos</div>
+
+            <a href="/layout/proyects.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-folder-open"></i></div>
+                <span class="nav-text">Proyectos</span>
+            </a>
+
+            <a href="/layout/activitys.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fa-solid fa-list"></i></div>
+                <span class="nav-text">Actividades</span>
+            </a>
+            <a href="/layout/hitos.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-flag-checkered"></i></div>
+                <span class="nav-text">Hitos</span>
+            </a>
+            <a href="/layout/resources.html" class="nav-item active" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-boxes"></i></div>
+                <span class="nav-text">Recursos</span>
+            </a>
+            <a href="/layout/calendary.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="nav-text">Calendarios</span>
+            </a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section class="welcome">
+                <h2>Bienvenido a CampusBuild | Recursos Humanos</h2>
+                <p>Personal disponible para asignar a proyectos.</p>
+            </section>
+            <section class="projects-view">
+                <div class="page-header">
+                    <button class="btn-primary" onclick="openForm()">+ Nuevo Recurso</button>
+                </div>
+                <table class="resource-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>RH</th>
+                            <th>ARL</th>
+                            <th>Genero</th>
+                            <th>Salario</th>
+                            <th>Rol</th>
+                            <th>Actividad</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resourceTableBody"></tbody>
+                </table>
+            </section>
+            <div id="resourceForm" class="modal hidden">
+                <div class="modal-content">
+                    <h3>Nuevo Recurso</h3>
+
+                    <input type="text" id="identificacion" placeholder="Identificación">
+                    <input type="text" id="nombre" placeholder="Nombre">
+                    
+                    <input type="date" id="fechaNacimiento">
+
+                    <select id="tipoSangre">
+                        <option value="">Tipo de Sangre</option>
+                        <option>A+</option><option>A-</option>
+                        <option>B+</option><option>B-</option>
+                        <option>O+</option><option>O-</option>
+                        <option>AB+</option><option>AB-</option>
+                    </select>
+
+                    <input type="text" id="arl" placeholder="ARL">
+
+                    <select id="genero">
+                        <option value="">Género (opcional)</option>
+                        <option>Masculino</option>
+                        <option>Femenino</option>
+                        <option>Otro</option>
+                    </select>
+
+                    <input type="number" id="salario" placeholder="Salario">
+
+                    <input type="text" id="rol" placeholder="Rol (Ingeniero, Supervisor...)">
+
+                    <select id="actividadSelect"></select>
+
+                    <button class="btn-primary" onclick="saveResource()">Guardar</button>
+                    <button class="btn-secondary" onclick="closeForm()">Cancelar</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/script/resources.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusBuild | Dashboard</title>
+    <link rel="stylesheet" href="/style/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="header">
+        </header>
+        <aside class="sidebar">
+            <div class="sidebar-logo-section">
+            <div class="logo-image-container">
+                <img src="/assets/img/logo.png" alt="CampusBuild Logo">
+            </div>
+            <div class="brand-name">
+                <h1>CampusBuild</h1>
+                <span>Gestión de Proyectos</span>
+            </div>
+            </div>
+
+            <nav class="sidebar-nav">
+            <div class="nav-section-label">Principal</div>
+            <a href="index.html" class="nav-item active" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
+                <span class="nav-text">Inicio</span>
+            </a>
+
+            <div class="nav-section-label">Proyectos</div>
+
+            <a href="/layout/proyects.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-folder-open"></i></div>
+                <span class="nav-text">Proyectos</span>
+            </a>
+
+            <a href="/layout/activitys.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fa-solid fa-list"></i></div>
+                <span class="nav-text">Actividades</span>
+            </a>
+            <a href="/layout/hitos.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-flag-checkered"></i></div>
+                <span class="nav-text">Hitos</span>
+            </a>
+            <a href="/layout/resources.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-boxes"></i></div>
+                <span class="nav-text">Recursos</span>
+            </a>
+            <a href="/layout/calendary.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="nav-text">Calendarios</span>
+            </a>
+            </nav>
+        </aside>
+        <main class="main-content">
+            <section class="welcome">
+                <h2>Bienvenido a CampusBuild | Dashboard</h2>
+                <p>Panel de control general de proyectos de construcciòn</p>
+            </section>
+            <section class="stat-grid">
+                <div class="card">
+                    <h3>Proyectos</h3>
+                    <p class="stat-number" id="totalProjects">0</p>
+                </div>
+                <div class="card">
+                    <h3>Actividades</h3>
+                    <p class="stat-number" id="totalActivities">0</p>
+                </div>
+                <div class="card">
+                    <h3>Hitos</h3>
+                    <p class="stat-number" id="totalHitos">0</p>
+                </div>
+                <div class="card">
+                    <h3>Recursos</h3>
+                    <p class="stat-number" id="totalResources">0</p>
+                </div>
+            </section>
+            <section class="dashboard-details">
+                <div class="activity-status card">
+                    <h3>Estado de Actividades</h3>
+
+                    <div class="status-item">
+                        <span>Pendientes</span>
+                        <span id="pending">0</span>
+                    </div>
+
+                    <div class="status-item">
+                        <span>En Proceso</span>
+                        <span id="progress">0</span>
+                    </div>
+
+                    <div class="status-item">
+                        <span>Terminadas</span>
+                        <span id="done">0</span>
+                    </div>
+
+                    <div class="progress-bar green">
+                        <div style="width: 100%"></div>
+                    </div>
+                </div>
+                <div class="milestone-progress card">
+                    <h3>Progreso de Hitos</h3>
+
+                    <p><span id="milestones">0</span> de 0 hitos completados</p>
+
+                    <div class="progress-bar orange">
+                        <div style="width: 100%"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="/script/dashboard.js"></script>
+</body>
+</html>

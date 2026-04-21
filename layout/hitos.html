@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConstruPro | Hitos</title>
+    <link rel="stylesheet" href="/style/hitos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+        <aside class="sidebar">
+            <div class="sidebar-logo-section">
+            <div class="logo-image-container">
+                <img src="/assets/img/logo.png" alt="CampusBuild Logo">
+            </div>
+            <div class="brand-name">
+                <h1>CampusBuild</h1>
+                <span>Gestión de Proyectos</span>
+            </div>
+            </div>
+
+            <nav class="sidebar-nav">
+            <div class="nav-section-label">Principal</div>
+            <a href="/layout/dashboard.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-home"></i></div>
+                <span class="nav-text">Dashboard</span>
+            </a>
+
+            <div class="nav-section-label">Proyectos</div>
+
+            <a href="/layout/proyects.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-folder-open"></i></div>
+                <span class="nav-text">Proyectos</span>
+            </a>
+
+            <a href="/layout/activitys.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fa-solid fa-list"></i></div>
+                <span class="nav-text">Actividades</span>
+            </a>
+            <a href="/layout/hitos.html" class="nav-item active" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-flag-checkered"></i></div>
+                <span class="nav-text">Hitos</span>
+            </a>
+            <a href="/layout/resources.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-boxes"></i></div>
+                <span class="nav-text">Recursos</span>
+            </a>
+            <a href="/layout/calendary.html" class="nav-item" onclick="setActive(this, event)">
+                <div class="nav-icon"><i class="fas fa-calendar-alt"></i></div>
+                <span class="nav-text">Calendarios</span>
+            </a>
+            </nav>
+        </aside>
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Hitos</h1>
+                <p class="page-subtitle">Gestión de hitos del proyecto</p>
+            </div>
+            <button class="btn-primary" id="btnNuevoHito">
+                <i class="fas fa-plus"></i> Nuevo Hito
+            </button>
+        </div>
+
+        <div id="listaHitos" class="hitos-grid"></div>
+
+        <!-- Modal -->
+        <div class="modal-overlay" id="modalOverlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Nuevo Hito</h2>
+                    <button class="close-btn" id="closeModal">&times;</button>
+                </div>
+                <form id="formHito">
+                    <div class="form-group">
+                        <label for="nombre">Nombre <span class="required">*</span></label>
+                        <input type="text" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea id="descripcion" name="descripcion"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="proyecto">Proyecto <span class="required">*</span></label>
+                        <select id="proyecto" name="proyecto" required>
+                            <option value="">Seleccionar proyecto</option>
+                            <option value="Proyecto 1">Proyecto 1</option>
+                            <option value="Proyecto 2">Proyecto 2</option>
+                            <option value="Proyecto 3">Proyecto 3</option>
+                        </select>
+                        <select id="estado">
+                            <option value="pendiente">Pendiente</option>
+                            <option value="en-proceso">En proceso</option>
+                            <option value="terminado">Terminado</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-submit">Crear Hito</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+<script src="../script/hitos.js"></script>
+</body>
+</html>

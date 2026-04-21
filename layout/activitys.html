@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Actividades - CampusBuild</title>
+<link rel="stylesheet" href="/style/activitys.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<!-- sidebar -->
+<aside class="sidebar">
+<div class="sidebar-logo-section">
+    <div class="logo-image-container">
+    <img src="/assets/img/logo.png" alt="CampusBuild Logo">
+    </div>
+    <div class="brand-name">
+    <h1>CampusBuild</h1>
+    <span>Gestión de Proyectos</span>
+    </div>
+</div>
+
+<nav class="sidebar-nav">
+    <div class="nav-section-label">Principal</div>
+    <a href="/layout/dashboard.html" class="nav-item">
+    <div class="nav-icon"><i class="fas fa-home"></i></div>
+    <span class="nav-text">Dashboard</span>
+    </a>
+
+    <div class="nav-section-label">Proyectos</div>
+
+    <a href="/layout/proyects.html" class="nav-item">
+    <div class="nav-icon"><i class="fas fa-folder-open"></i></div>
+    <span class="nav-text">Proyectos</span>
+    </a>
+
+    <a href="/layout/activitys.html" class="nav-item active">
+    <div class="nav-icon"><i class="fa-solid fa-list"></i></div>
+    <span class="nav-text">Actividades</span>
+    </a>
+    <a href="/layout/hitos.html" class="nav-item">
+    <div class="nav-icon"><i class="fas fa-flag-checkered"></i></div>
+    <span class="nav-text">Hitos</span>
+    </a>
+    <a href="/layout/resources.html" class="nav-item">
+    <div class="nav-icon"><i class="fas fa-boxes"></i></div>
+    <span class="nav-text">Recursos</span>
+    </a>
+    <a href="/layout/calendary.html" class="nav-item">
+    <div class="nav-icon"><i class="fas fa-calendar-alt"></i></div>
+    <span class="nav-text">Calendarios</span>
+    </a>
+</nav>
+</aside>
+
+<!-- contenido principal -->
+<main class="main-content">
+
+<div class="page-header">
+    <div>
+    <h1>Actividades</h1>
+    <p class="subtitle">Tareas asignadas a cada proyecto</p>
+    </div>
+    <button class="btn-primary" onclick="openModal()">
+    + Nueva Actividad
+    </button>
+</div>
+
+<!-- Filtro por proyecto -->
+<div class="filter-bar">
+    <label for="filterProject">Filtrar por proyecto:</label>
+    <select id="filterProject" onchange="render()">
+    <option value="">Todos</option>
+    </select>
+</div>
+
+<!-- Lista de actividades -->
+<div class="activity-list" id="activityList"></div>
+
+</main>
+
+<!-- Modal Crear / Editar -->
+<div class="overlay hidden" id="modalOverlay">
+<div class="modal">
+    <h2 id="modalTitle">Nueva Actividad</h2>
+    <input type="hidden" id="editingId"/>
+
+    <label>Nombre</label>
+    <input type="text" id="formName" placeholder="Nombre de la actividad"/>
+
+    <label>Proyecto</label>
+    <select id="formProject"></select>
+
+    <label>Responsable</label>
+    <input type="text" id="formResponsable" placeholder="Nombre del responsable"/>
+
+    <div class="date-row">
+    <div>
+        <label>Fecha Inicio</label>
+        <input type="date" id="formStart"/>
+    </div>
+    <div>
+        <label>Duración (días)</label>
+        <input type="number" id="formDuration" placeholder="Ej: 3" min="1"/>
+    </div>
+    </div>
+
+    <label>Estado</label>
+    <select id="formStatus">
+    <option value="Pendiente">Pendiente</option>
+    <option value="En progreso">En progreso</option>
+    <option value="Terminada">Terminada</option>
+    </select>
+
+    <div class="modal-footer">
+    <button class="btn-secondary" onclick="closeModal()">Cancelar</button>
+    <button class="btn-primary" onclick="saveActivity()">Guardar</button>
+    </div>
+</div>
+</div>
+
+<!-- Modal Confirmar eliminación -->
+<div class="overlay hidden" id="deleteOverlay">
+<div class="modal" style="max-width:360px">
+    <h2>¿Eliminar actividad?</h2>
+    <p style="color:#555;margin-bottom:24px">Esta acción no se puede deshacer.</p>
+    <input type="hidden" id="deleteId"/>
+    <div class="modal-footer">
+    <button class="btn-secondary" onclick="closeDelete()">Cancelar</button>
+    <button class="btn-primary btn-danger" onclick="confirmDelete()">Eliminar</button>
+    </div>
+</div>
+</div>
+
+<script src="/script/activitys.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConstruPro — Calendario</title>
+    <link rel="stylesheet" href="/style/calendary.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard">
+            <aside class="sidebar">
+        <div class="sidebar-logo-section">
+        <div class="logo-image-container">
+            <img src="/assets/img/logo.png" alt="CampusBuild Logo">
+        </div>
+        <div class="brand-name">
+            <h1>CampusBuild</h1>
+            <span>Gestión de Proyectos</span>
+        </div>
+        </div>
+        <nav class="sidebar-nav">
+        <div class="nav-section-label">Principal</div>
+        <a href="index.html" class="nav-item" onclick="setActive(this, event)">
+            <div class="nav-icon"><i class="fas fa-home"></i></div>
+            <span class="nav-text">Dashboard</span>
+        </a>
+        <div class="nav-section-label">Proyectos</div>
+        <a href="/layout/proyects.html" class="nav-item" onclick="setActive(this, event)">
+            <div class="nav-icon"><i class="fas fa-folder-open"></i></div>
+            <span class="nav-text">Proyectos</span>
+        </a>
+        <a href="/layout/activitys.html" class="nav-item" onclick="setActive(this, event)">
+            <div class="nav-icon"><i class="fa-solid fa-list"></i></div>
+            <span class="nav-text">Actividades</span>
+        </a>
+        <a href="/layout/hitos.html" class="nav-item" onclick="setActive(this, event)">
+            <div class="nav-icon"><i class="fas fa-flag-checkered"></i></div>
+            <span class="nav-text">Hitos</span>
+        </a>
+        <a href="/layout/resources.html" class="nav-item" onclick="setActive(this, event)">
+            <div class="nav-icon"><i class="fas fa-boxes"></i></div>
+            <span class="nav-text">Recursos</span>
+        </a>
+        <a href="/layout/calendary.html" class="nav-item active" onclick="setActive(this, event)">
+            <div class="nav-icon"><i class="fas fa-calendar-alt"></i></div>
+            <span class="nav-text">Calendarios</span>
+        </a>
+        </nav>
+    </aside>
+    </div>
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Calendario</h1>
+                <p class="page-subtitle">Cronograma visual de actividades</p>
+            </div>
+            
+            <div class="header-filter">
+                <label for="filtroProyecto">Proyecto:</label>
+                <select id="filtroProyecto">
+                    <option value="todos">Todos</option>
+                    <option value="Proyecto 1">Proyecto 1</option>
+                    <option value="Proyecto 2">Proyecto 2</option>
+                    <option value="Proyecto 3">Proyecto 3</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="calendar-container">
+            <div class="calendar-nav">
+                <button id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                <h2 id="mesAnio"></h2>
+                <button id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+            </div>
+
+            <div class="legend">
+                <span class="legend-item pendiente"><span class="dot"></span>Pendiente</span>
+                <span class="legend-item en-proceso"><span class="dot"></span>En Proceso</span>
+                <span class="legend-item terminada"><span class="dot"></span>Terminada</span>
+            </div>
+
+            <div class="calendar-grid">
+                <div class="day-header">Dom</div>
+                <div class="day-header">Lun</div>
+                <div class="day-header">Mar</div>
+                <div class="day-header">Mié</div>
+                <div class="day-header">Jue</div>
+                <div class="day-header">Vie</div>
+                <div class="day-header">Sab</div>
+            </div>
+            <div id="calendarBody" class="calendar-body"></div>
+        </div>
+
+
+        <!-- Modal para Agregar/Editar Actividad -->
+    <div class="modal-overlay" id="modalActividad">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Nueva Actividad</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <form id="formActividad">
+                <input type="hidden" id="actividadId">
+                
+                <div class="form-group">
+                    <label for="actNombre">Nombre *</label>
+                    <input type="text" id="actNombre" required placeholder="Nombre de la actividad">
+                </div>
+
+                <div class="form-group">
+                    <label for="actProyecto">Proyecto *</label>
+                    <select id="actProyecto" required>
+                        <option value="">Seleccionar proyecto</option>
+                        <option value="Proyecto 1">Proyecto 1</option>
+                        <option value="Proyecto 2">Proyecto 2</option>
+                        <option value="Proyecto 3">Proyecto 3</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="actEstado">Estado *</label>
+                    <select id="actEstado" required>
+                        <option value="pendiente">Pendiente</option>
+                        <option value="en-proceso">En Proceso</option>
+                        <option value="terminada">Terminada</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="actInicio">Fecha Inicio *</label>
+                        <input type="date" id="actInicio" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="actFin">Fecha Fin *</label>
+                        <input type="date" id="actFin" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="actDescripcion">Descripción</label>
+                    <textarea id="actDescripcion" rows="3" placeholder="Descripción opcional"></textarea>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="btnCancel">Cancelar</button>
+                    <button type="submit" class="btn-save">Guardar Actividad</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación para Eliminar -->
+    <div class="modal-overlay" id="modalConfirmar">
+        <div class="modal-confirm">
+            <div class="confirm-icon">⚠️</div>
+            <h3>¿Eliminar Actividad?</h3>
+            <p id="confirmMessage">¿Estás seguro de eliminar esta actividad?</p>
+            <div class="confirm-actions">
+                <button class="btn-cancel" id="btnNoEliminar">Cancelar</button>
+                <button class="btn-delete" id="btnSiEliminar">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+</main>
+
+<script src="../script/calendary.js"></script>
+</body>
+</html>
