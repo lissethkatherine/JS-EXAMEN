@@ -133,3 +133,32 @@ function openModal() {
 renderHitos();
 
 document.addEventListener("DOMContentLoaded", loadProjectsSelect);
+function renderReporte() {
+    const hitos      = JSON.parse(localStorage.getItem('hitos') || '[]');
+    const activities = JSON.parse(localStorage.getItem('campusbuild_activities') || '[]');
+
+    for (let i = 0; i < hitos.length; i++) {
+        let pendientes = 0, enProceso = 0, terminadas = 0;
+
+        for (let j = 0; j < activities.length; j++) {
+            if (String(activities[j].projectId) === String(hitos[i].proyecto)) {
+                if (activities[j].status === 'Pendiente')   pendientes++;
+                if (activities[j].status === 'En progreso') enProceso++;
+                if (activities[j].status === 'Terminada')   terminadas++;
+            }
+        }
+
+        const total = pendientes + enProceso + terminadas;
+        let estado  = 'Pendiente';
+        if (enProceso > 0) estado = 'En Proceso';
+        if (total > 0 && terminadas === total) estado = 'Completado';
+
+        document.getElementById('hito-nombre-'     + i).textContent = hitos[i].nombre;
+        document.getElementById('hito-estado-'     + i).textContent = estado;
+        document.getElementById('hito-pendientes-' + i).textContent = pendientes;
+        document.getElementById('hito-enproceso-'  + i).textContent = enProceso;
+        document.getElementById('hito-terminadas-' + i).textContent = terminadas;
+    }
+}
+
+renderReporte();
