@@ -130,6 +130,7 @@ function openModal() {
     modalOverlay.classList.add('active');
 }
 
+
 renderHitos();
 
 document.addEventListener("DOMContentLoaded", loadProjectsSelect);

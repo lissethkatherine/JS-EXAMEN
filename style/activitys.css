@@ -341,7 +341,6 @@ width: 90%; max-width: 480px;
 box-shadow: 0 8px 40px rgba(0,0,0,0.2);
 animation: modalIn 0.3s ease;
 }
-
 @keyframes modalIn {
 from { transform: scale(0.95); opacity: 0; }
 to   { transform: scale(1);    opacity: 1; }

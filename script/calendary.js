@@ -6,7 +6,6 @@ let actividades = JSON.parse(localStorage.getItem('actividades')) || [
 function loadExternalActivities() {
     return JSON.parse(localStorage.getItem("campusbuild_activities")) || [];
 }
-
 function loadProjects() {
     return JSON.parse(localStorage.getItem("campusbuild_projects")) || [];
 }

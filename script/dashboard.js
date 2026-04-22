@@ -4,7 +4,6 @@ const STORAGE_KEY = "campusbuild_resources";
 const HITOS_KEY = "hitos";
 const CALENDAR_KEY = "actividades";
 
-
 function loadDashboardStats(){
 
     const activities = JSON.parse(localStorage.getItem(ACTIVITIES_KEY)) || [];

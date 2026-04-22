@@ -307,6 +307,5 @@ function getDashboardStats() {
         terminadas
     };
 }
-
 document.addEventListener("DOMContentLoaded", render);
 document.getElementById("filterProject")?.addEventListener("change", render);

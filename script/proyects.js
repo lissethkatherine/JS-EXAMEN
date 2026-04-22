@@ -10,7 +10,6 @@ function saveProjects(projects) {
     
 }
 
-// ── Render 
 function render() {
     const projects = loadProjects();
     const grid     = document.getElementById("projectGrid");

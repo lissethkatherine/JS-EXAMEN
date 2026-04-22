@@ -12,7 +12,6 @@ function saveResources(data) {
 function getActivities() {
     return JSON.parse(localStorage.getItem(ACTIVITIES_KEY)) || [];
 }
-
 function renderTable() {
     const data = getResources();
     const tbody = document.getElementById("resourceTableBody");
